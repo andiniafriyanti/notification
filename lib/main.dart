@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_notification/simple_login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 
@@ -71,6 +72,7 @@ class PageHome extends StatelessWidget {
                   textColor: Colors.white,
                   child: Text('Alert1'),
                   onPressed: () {
+                    //Fungsi Alert Internet
                     showDialog(
                         context: context,
                         builder: (_) => NetworkGiffyDialog(
@@ -92,7 +94,6 @@ class PageHome extends StatelessWidget {
                               ),
                               onOkButtonPressed: () {},
                             ));
-                    //Fungsi Alert Internet
                   }),
             ),
             Container(
@@ -102,7 +103,27 @@ class PageHome extends StatelessWidget {
                   textColor: Colors.white,
                   child: Text('Alert2'),
                   onPressed: () {
-                    //Fungsi Alert2
+                    ///Membuat Alert Image Load Dari Local
+                    showDialog(
+                        context: context,
+                        builder: (_) => AssetGiffyDialog(
+                          key: key[5],
+                          image: Image.asset(
+                            'assets/stroberi.gif',
+                            fit: BoxFit.cover,
+                          ),
+                          title: Text(
+                            'Men Wearing Jackets',
+                            style: TextStyle(
+                                fontSize: 22.0, fontWeight: FontWeight.w600),
+                          ),
+                          description: Text(
+                            'This is a men wearing jackets dialog box. This library helps you easily create fancy giffy dialog.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(),
+                          ),
+                          onOkButtonPressed: () {},
+                        ));
                   }),
             ),
             Container(
@@ -110,6 +131,7 @@ class PageHome extends StatelessWidget {
               child: MaterialButton(
                 onPressed: () {
                   //Fungsi Pindah activity 1 ke login
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PageSimpleLogin ()));
                 },
                 color: Colors.red,
                 textColor: Colors.white,
@@ -123,3 +145,4 @@ class PageHome extends StatelessWidget {
   }
 
 }
+
